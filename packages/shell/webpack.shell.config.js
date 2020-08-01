@@ -36,9 +36,9 @@ const shell = {
     new ModuleFederationPlugin({
       name: "shell",
       library: { type: "var", name: "shell" },
-      remotes: {
-        "mfe1": "mfe1"
-      },
+      // remotes: {
+      //   "mfe1": "mfe1"
+      // },
       shared: ["rxjs", "useless-lib"]
       // shared: { 
       //   "rxjs": {}, 

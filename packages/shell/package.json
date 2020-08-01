@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "rxjs": "^7.0.0-beta.0",
-    "useless-lib": "^1.0.0",
+    "useless-lib": "^1.1.0",
     "webpack": "^5.0.0-beta.22"
   },
   "keywords": [],

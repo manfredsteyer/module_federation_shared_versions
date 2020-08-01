@@ -2,6 +2,8 @@
 // hence the dynamic one inside an async IIFE below
 //import * as rxjs from 'rxjs';
 
+import { loadRemoteModule } from './federation-utils';
+
 // import * as useless_static from 'useless-lib';
 
 // console.debug('useless_static', useless_static.version);
@@ -31,7 +33,15 @@ function displayWelcomeMessage() {
     displayWelcomeMessage();
 
     rxjs.fromEvent(flightsLink, 'click').subscribe(async _ => {
-        const module = await import('mfe1/component');
+        
+        // const module = await import('mfe1/component');
+        
+        const module = await loadRemoteModule({
+            remoteEntry: 'http://localhost:3000/remoteEntry.js',
+            remoteName: 'mfe1',
+            exposedModule: './component'
+        });
+
         const elm = document.createElement(module.elementName);
         removeFirstChild();       
         container.appendChild(elm);
