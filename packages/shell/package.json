@@ -7,10 +7,11 @@
     "serve:dist": "serve ./dist/shell -l 5000",
     "build": "webpack --config webpack.shell.config.js",
     "start": "webpack-dev-server --config webpack.shell.config.js"
-
   },
   "dependencies": {
-    "rxjs": "^7.0.0-beta.0"
+    "rxjs": "^7.0.0-beta.0",
+    "useless-lib": "^1.0.0",
+    "webpack": "^5.0.0-beta.22"
   },
   "keywords": [],
   "author": "",
