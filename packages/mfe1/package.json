@@ -1,0 +1,18 @@
+{
+  "name": "mfe1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve:dist": "serve ./dist/mfe1 -l 3000",
+    "build": "webpack --config webpack.mfe1.config.js",
+    "start": "webpack-dev-server --config webpack.mfe1.config.js"
+
+  },
+  "dependencies": {
+    "rxjs": "^7.0.0-beta.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
