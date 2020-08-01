@@ -39,7 +39,20 @@ const shell = {
       remotes: {
         "mfe1": "mfe1"
       },
-      shared: ["rxjs"]
+      shared: ["rxjs", "useless-lib"]
+      // shared: { 
+      //   "rxjs": {}, 
+      //   "useless-lib": {
+      //     singleton: true,
+      //   }
+      // },
+      // shared: { 
+      //   "rxjs": {}, 
+      //   "useless-lib": {
+      //     singleton: true,
+      //     strictVersion: true,
+      //   }
+      // },
     }),
     new HtmlWebpackPlugin({
       template: "./src/index.html"

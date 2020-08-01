@@ -2,9 +2,14 @@
 // hence the dynamic one inside an async IIFE below
 //import * as rxjs from 'rxjs';
 
+// import * as useless_static from 'useless-lib';
+
+// console.debug('useless_static', useless_static.version);
+
 const container = document.getElementById('container');
 const flightsLink = document.getElementById('flights');
 const homeLink = document.getElementById('home');
+const version = document.getElementById('version');
 
 function removeFirstChild() {
     if (container.firstChild) {
@@ -19,6 +24,9 @@ function displayWelcomeMessage() {
 
 (async function() { 
     const rxjs = await import('rxjs');
+    const useless = await import('useless-lib');
+
+    version.innerText = useless.version;
 
     displayWelcomeMessage();
 

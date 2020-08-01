@@ -40,7 +40,25 @@ const mfe1 =  {
       exposes: {
         "./component": "./src/component"
       },
-        shared: ["rxjs"]
+      shared: ["rxjs", "useless-lib"]
+      // shared: { 
+      //   "rxjs": {},
+      //   "useless-lib": ">=1.0.0 <3.0.0" 
+      // }
+      // shared: { 
+      //   "rxjs": {},
+      //   "useless-lib": {
+      //     singleton: true
+      //   } 
+      // }
+      // shared: { 
+      //   "rxjs": {},
+      //   "useless-lib": {
+      //     singleton: true,
+      //     strictVersion: true,
+      //     // version: ">=1.0.0"
+      //   } 
+      // }
     }),
     new HtmlWebpackPlugin({
       template: "./src/index.html"
