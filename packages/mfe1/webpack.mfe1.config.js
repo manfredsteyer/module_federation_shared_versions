@@ -49,7 +49,8 @@ const mfe1 =  {
         "rxjs": {},
         "useless-lib": {
           singleton: true,
-          strictVersion: true
+          strictVersion: true,
+          requiredVersion: ">=1.0.0 <3.0.0"
         } 
       }
       // shared: { 
