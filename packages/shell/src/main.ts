@@ -7,7 +7,11 @@
 // console.debug('useless_static', useless_static.version);
 
 const container = document.getElementById('container');
-const flightsLink = document.getElementById('flights');
+const flightsLink1 = document.getElementById('flights1');
+const flightsLink2 = document.getElementById('flights2');
+const flightsLink3 = document.getElementById('flights3');
+
+
 const homeLink = document.getElementById('home');
 const version = document.getElementById('version');
 
@@ -30,8 +34,22 @@ function displayWelcomeMessage() {
 
     displayWelcomeMessage();
 
-    rxjs.fromEvent(flightsLink, 'click').subscribe(async _ => {
+    rxjs.fromEvent(flightsLink1, 'click').subscribe(async _ => {
         const module = await import('mfe1/component');
+        const elm = document.createElement(module.elementName);
+        removeFirstChild();       
+        container.appendChild(elm);
+    });
+
+    rxjs.fromEvent(flightsLink2, 'click').subscribe(async _ => {
+        const module = await import('mfe2/component');
+        const elm = document.createElement(module.elementName);
+        removeFirstChild();       
+        container.appendChild(elm);
+    });
+
+    rxjs.fromEvent(flightsLink3, 'click').subscribe(async _ => {
+        const module = await import('mfe3/component');
         const elm = document.createElement(module.elementName);
         removeFirstChild();       
         container.appendChild(elm);
@@ -39,6 +57,6 @@ function displayWelcomeMessage() {
 
     rxjs.fromEvent(homeLink, 'click').subscribe(_ => {
         displayWelcomeMessage();
-    })
+    });
 
 })();

@@ -3,12 +3,12 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const shell = {
-  entry: ["./src/main", "./src/styles.css"],
+const mfe3 =  {
+  entry: "./src/main",
   mode: "development",
   devServer: {
-    contentBase: path.join(__dirname, "dist/shell"),
-    port: 5000
+    contentBase: path.join(__dirname, "dist/mfe3"),
+    port: 3002
   },
   module: {
     rules: [
@@ -20,52 +20,57 @@ const shell = {
         test: /\.ts$/,
         use: 'ts-loader',
         exclude: /node_modules/,
-      },      
+      },        
     ],
-  },  
+  },    
+  output: {
+      publicPath: "http://localhost:3002/",
+      path: path.join(__dirname, "dist/mfe3"),
+      filename: '[name].js'
+  },
   resolve: {
     extensions: [ '.ts', '.js' ],
   },  
-  output: {
-    publicPath: "http://localhost:5000/",
-    path: path.join(__dirname, "dist/shell"),
-    filename: '[name].js'
-  },
   plugins: [
     new MiniCssExtractPlugin(),
     new ModuleFederationPlugin({
-      name: "shell",
-      library: { type: "var", name: "shell" },
-      remotes: {
-        "mfe1": "mfe1",
-        "mfe2": "mfe2",
-        "mfe3": "mfe3"
+      name: "mfe3",
+      library: { type: "var", name: "mfe3" },
+      filename: "remoteEntry.js",
+      exposes: {
+        "./component": "./src/component"
       },
       // shared: ["rxjs", "useless-lib"]
       // shared: { 
-      //   "rxjs": {}, 
-      //   "useless-lib": {
-      //     singleton: true,
-      //   }
-      // },
+      //   "rxjs": {},
+      //   "useless-lib": ">=1.0.0 <3.0.0" 
+      // }
       // shared: { 
-      //   "rxjs": {}, 
+      //   "rxjs": {},
+      //   "useless-lib": {
+      //     singleton: true
+      //   } 
+      // }
+      // shared: { 
+      //   "rxjs": {},
       //   "useless-lib": {
       //     singleton: true,
       //     strictVersion: true,
-      //   }
-      // },
+      //     // version: ">=1.0.0"
+      //   } 
+      // }
       shared: { 
-        "rxjs": {}, 
+        "rxjs": {},
         "useless-lib": {
-          singleton: true,
-        }
-      },
+          shareScope: "other",
+          singleton: true
+        } 
+      }
     }),
     new HtmlWebpackPlugin({
       template: "./src/index.html"
-    })
-  ]
+    }),
+  ]    
 };
 
-module.exports = shell;
+module.exports = mfe3;

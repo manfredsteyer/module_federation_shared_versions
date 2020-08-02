@@ -1,0 +1,19 @@
+{
+  "name": "mfe2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve:dist": "serve ./dist/mfe2 -l 3001",
+    "build": "webpack --config webpack.mfe2.config.js",
+    "start": "webpack-dev-server --config webpack.mfe2.config.js"
+  },
+  "dependencies": {
+    "rxjs": "^7.0.0-beta.0",
+    "useless-lib": "^2.0.0",
+    "webpack": "^5.0.0-beta.22"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
