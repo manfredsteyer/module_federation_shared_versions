@@ -62,8 +62,7 @@ const mfe2 =  {
       shared: { 
         "rxjs": {},
         "useless-lib": {
-          shareScope: "other",
-          singleton: true
+          shareScope: "other"
         } 
       }
     }),
