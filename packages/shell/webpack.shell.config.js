@@ -39,7 +39,12 @@ const shell = {
       remotes: {
         "mfe1": "mfe1"
       },
-      shared: ["rxjs", "useless-lib"]
+      shared: { 
+        "rxjs": {},
+        "useless-lib": {
+          strictVersion: false
+        } 
+      },
       // shared: { 
       //   "rxjs": {}, 
       //   "useless-lib": {
