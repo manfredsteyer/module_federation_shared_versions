@@ -38,8 +38,8 @@ const shell = {
       library: { type: "var", name: "shell" },
       remotes: {
         "mfe1": "mfe1",
-        "mfe2": "mfe2",
-        "mfe3": "mfe3"
+        "mfe2": { external: "mfe2", shareScope: "other"},
+        "mfe3": { external: "mfe3", shareScope: "other"},
       },
       // shared: ["rxjs", "useless-lib"]
       // shared: { 
@@ -59,6 +59,7 @@ const shell = {
         "rxjs": {}, 
         "useless-lib": {
           singleton: true,
+          // shareScope: "other"
         }
       },
     }),

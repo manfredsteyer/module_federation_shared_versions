@@ -62,8 +62,12 @@ const mfe3 =  {
       shared: { 
         "rxjs": {},
         "useless-lib": {
+          singleton: true,
+          shareScope: "default"
+        },
+        "even-more-useless-lib": {
           shareScope: "other"
-        } 
+        }
       }
     }),
     new HtmlWebpackPlugin({

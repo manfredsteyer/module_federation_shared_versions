@@ -36,6 +36,7 @@ class Microfrontend1 extends HTMLElement {
         const terms = this.shadowRoot.getElementById('terms');
         const container = this.shadowRoot.getElementById('container');
         const version = this.shadowRoot.getElementById('version');
+        const otherVersion = this.shadowRoot.getElementById('otherVersion');
 
         const rxjs = await import('rxjs');
         const useless = await import('useless-lib');

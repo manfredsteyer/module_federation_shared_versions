@@ -64,6 +64,7 @@ const mfe1 =  {
         "rxjs": {},
         "useless-lib": {
           singleton: true
+          // singleton: true
         } 
       }
       
