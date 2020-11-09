@@ -1,54 +1,12 @@
-// static imports do currently not work with shared libs,
-// hence the dynamic one inside an async IIFE below
-//import * as rxjs from 'rxjs';
+import { initRemote, loadRemoteEntry } from './federation-utils';
 
-import { loadRemoteModule } from './federation-utils';
+const url = 'http://localhost:3000/remoteEntry.js';
+const remoteName = 'mfe1';
+    // let's assume we've got this url and remoteName 
+    // from a lookup service at runtime
 
-// import * as useless_static from 'useless-lib';
+loadRemoteEntry(url)
+    .then(_ => initRemote(remoteName))
+    .then(_ => import('./bootstrap'))
+    .catch(err => console.error('error bootstrapping', err));
 
-// console.debug('useless_static', useless_static.version);
-
-const container = document.getElementById('container');
-const flightsLink = document.getElementById('flights');
-const homeLink = document.getElementById('home');
-const version = document.getElementById('version');
-
-function removeFirstChild() {
-    if (container.firstChild) {
-        container.firstChild.remove();
-    }
-}
-
-function displayWelcomeMessage() {
-    removeFirstChild();
-    container.innerHTML = `<h1>Welcome!</h1>`;
-}
-
-(async function() { 
-    const rxjs = await import('rxjs');
-    const useless = await import('useless-lib');
-
-    version.innerText = useless.version;
-
-    displayWelcomeMessage();
-
-    rxjs.fromEvent(flightsLink, 'click').subscribe(async _ => {
-        
-        // const module = await import('mfe1/component');
-        
-        const module = await loadRemoteModule({
-            remoteEntry: 'http://localhost:3000/remoteEntry.js',
-            remoteName: 'mfe1',
-            exposedModule: './component'
-        });
-
-        const elm = document.createElement(module.elementName);
-        removeFirstChild();       
-        container.appendChild(elm);
-    });
-
-    rxjs.fromEvent(homeLink, 'click').subscribe(_ => {
-        displayWelcomeMessage();
-    })
-
-})();
